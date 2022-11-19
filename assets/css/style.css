@@ -36,13 +36,18 @@ body {
       color: #BABABA;
 }
 
+.nav-white {
+      color: #BABABA;
+}
+
+
 .btn-main {
       background-color: #5142fc;
       color: #ffffff;
-      border-radius: 6px;
       padding: 20px 30px 20px 30px;
-      font-family: 'Inter';
+      border-radius: 6px;
       font-style: normal;
+      font-family: 'Inter';
       font-weight: 600;
       font-size: 16px;
       line-height: 19px;
@@ -56,9 +61,8 @@ body {
 .btn-sec {
       color: #ffffff;
       border: #ffffff solid 2px;
-      border-radius: 6px;
       padding: 18px 30px 18px 30px;
-      font-family: 'Inter';
+      border-radius: 6px;
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
@@ -71,7 +75,10 @@ body {
 }
 
 
-
+.btn-sm {
+      padding: 9px 15px 9px 15px;
+      border-width: 1px;
+}
 
 
 
@@ -81,7 +88,7 @@ body {
 
 
 #w {
-      width: 600px;
+      max-width: 100%;
 }
 
 #w model-viewer {
@@ -91,4 +98,18 @@ body {
       top: 0;
       left: 0;
       border: none;
+}
+
+
+
+
+@media only screen and (max-width: 576px) {
+      #w model-viewer {
+            height: 90vw;
+            width: 90vw;
+            /* position: absolute; */
+            top: 0;
+            left: 0;
+            border: none;
+      }
 }
