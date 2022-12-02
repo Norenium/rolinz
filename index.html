@@ -22,7 +22,7 @@
             <nav class="navbar navbar-expand-lg nav-bg sticky-top">
                   <div class="container-fluid">
                         <a class="navbar-brand" href="#">
-                              <img src="assets/img/nav-logo.png" alt="Rolinz logo">
+                              <img src="assets/img/nav-logo.png" alt="Bllockitop logo">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                               data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -40,11 +40,20 @@
                                           <a class="nav-link nav-white" href="#">Whitepaper</a>
                                           <a class="nav-link nav-white" href="#">Community</a>
                                     </div>
-                                    <div class="btn-sec d-inline-flex">
+                                    <div class="btn-sec d-inline-flex" id="cw-btn">
                                           <img
                                                 src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAMpJREFUSEvtlVERwjAQRHcVIAGQgAMcYAEUIAEk4ACkIAEJrQMcLJMMMG0600tzk34w9DfNvrvsJkdU/lhZH/MCJF0A7ACsHJ01AA4k70Hj28Fb/OgQ7m5tSK5TwBPAAsCG5KMUJElRmIzFdzvoLfwuQNIWwNUKQvERSQopWVpH6AGMeuU2ORVIO/kDIOlzIUd99pgcYnqzklQMsOLpNtkDqP7YnQGcrAoz11uScab0JpqkANlbBhqQNmgMBk5mZZN/m3cmTy4vY8ML7YWYGRQromsAAAAASUVORK5CYII=" />
                                           &nbsp;&nbsp; Connect Wallet
                                     </div>
+                                    <div id="mc-btn-frm" style="display: none;">
+                                          <div class="btn-sec" id="mc-btn">
+                                                <img class="thumbnail-sm" src="assets/img/MetaMask.svg" />
+
+                                                <span style="margin-top: 16px;"> Network: <span
+                                                            id="network-name"></span></span>
+                                          </div>
+                                    </div>
+
                               </div>
 
                         </div>
@@ -107,7 +116,80 @@
 
 
 
+            <div class="whitepaper" style="display:none ;">
+                  'Blockitop' is a blockchain-based project which allows creating and trading of virtual goods on the
+                  internet. It
+                  is
+                  basically a platform that allows users to create, trade, and manage digital assets. It is based on the
+                  ERC20
+                  blockchain
+                  and the main focus is to create an open-source ecosystem for managing digital assets.
 
+                  NFTs are digital assets that are similar to cryptocurrencies or digital currencies. The main feature
+                  of NFTs is
+                  that
+                  they can be used as monetary systems and have different applications in games, art, and commerce. NFTs
+                  are
+                  becoming more
+                  and more popular because they provide various benefits over traditional methods of making and using
+                  virtual
+                  currencies.
+                  For instance, NFTs are more secure, can be copied infinitely, are accessible worldwide, and are
+                  transferable
+                  without
+                  restrictions.
+
+                  NFTs are created through the ERC20 protocol which allows developers to issue custom tokens to be
+                  traded on the
+                  platform.
+                  Thus, businesses have many profit-making opportunities by giving their own NFTs. For example, game
+                  developers can
+                  issue
+                  game assets such as characters or items in their games to be traded. This way, they can generate
+                  revenue from
+                  their
+                  creations and promote them worldwide. On the other hand, businesses can also use NFTs for fundraising
+                  by issuing
+                  them to
+                  investors.
+
+                  NFTs offer several advantages over traditional methods of making and using virtual currencies. One of
+                  these
+                  advantages
+                  is that holding NFTs gives you access to its utilities instead of purchasing them directly from
+                  developers. For
+                  instance, if you have 'blockitop' tokens, you can use them for Paypal or other payment methods on the
+                  internet.
+                  Furthermore, selling your blockitop gives you money for them instantly and lets you make money off of
+                  your
+                  creation. The
+                  process of selling blockitop gives you money instantly while giving the seller access to your utility
+                  applications.
+
+                  However, it's important to note that making a profit off of blackitops isn't easy- it requires a lot
+                  of research
+                  into
+                  current market values and an understanding of how useful certain applications can be. For example, if
+                  you created
+                  a game
+                  where players could customize their avatars with different clothing options and skin tones- that would
+                  be very
+                  useful in
+                  many scenarios. It would allow players to easily customize their avatars without any difficulty or
+                  knowledge of
+                  coding
+                  languages. Therefore, making a profit off blockitop requires that you know how to correctly apply your
+                  idea to the
+                  platform and generate revenue from it.
+
+                  Overall, creating NFTs can be profitable if you know how to apply your idea to the platform and make
+                  money off of
+                  it.
+                  It's also necessary to know how to profit from selling your creations via blockitop utilities-
+                  otherwise, there's
+                  no
+                  incentive for businesses to create custom tokens for investors or users alike.
+            </div>
 
 
 
@@ -415,9 +497,34 @@
             <br>
             <br>
 
+            <div class="info-panel main-description" id="tb">
+                  <table>
+                        <tr>
+                              <th>Key</th>
+                              <th>Value</th>
+                        </tr>
+                        <tr>
+                              <td>Coin Name</td>
+                              <td id="coin-name"></td>
+                        </tr>
+                        <tr>
+                              <td>Coin Balance</td>
+                              <td id="coin-balance"></td>
+                        </tr>
+                        <tr>
+                              <td>Connected wallet address</td>
+                              <td id="wallet-address"></td>
+                        </tr>
+                  </table>
+            </div>
+
       </section>
       <script src="assets/node_modules/bootstrap/dist/js/bootstrap.js"></script>
-
+      <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+      <script src="assets/js/norenium/const.js"></script>
+      <script src="assets/js/norenium/onPageWallet.js"></script>
+      <script src="assets/js/norenium/indexManager.js"></script>
+      <script src="assets/js/norenium/blockiIndex.js"></script>
 </body>
 <!--Imports a model-viewer JavaScript code -->
 <!--It helps to handle how the 3D Object would be displayed -->

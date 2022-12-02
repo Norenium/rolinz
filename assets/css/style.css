@@ -4,6 +4,7 @@ body {
       margin: auto;
       padding: auto;
       max-width: 1366px;
+
 }
 
 section {
@@ -43,6 +44,7 @@ body {
 
 .btn-main {
       background-color: #5142fc;
+      border: none;
       color: #ffffff;
       padding: 20px 30px 20px 30px;
       border-radius: 6px;
@@ -53,26 +55,45 @@ body {
       line-height: 19px;
 }
 
-.btn-main:hover {
+.btn-main:disabled {
+      background-color: #1d1a3b;
+      color: #888787;
+      border: none;
+      cursor: not-allowed;
+}
+
+.btn-main:hover:enabled {
       cursor: pointer;
       background-color: #3d33aa;
 }
 
+
+
 .btn-sec {
       color: #ffffff;
       border: #ffffff solid 2px;
+      background-color: #ffffff00 !important;
       padding: 18px 30px 18px 30px;
       border-radius: 6px;
       font-style: normal;
       font-weight: 500;
       font-size: 16px;
       line-height: 19px;
+      white-space: nowrap;
+      display: inline;
 }
 
-.btn-sec:hover {
-      background-color: #eeeeee3b;
+.btn-sec:hover:enabled {
       cursor: pointer;
 }
+
+.btn-sec:disabled {
+      /* background-color: #1d1a3b; */
+      border: #8d8d8d solid 2px;
+      color: #888787;
+      cursor: not-allowed;
+}
+
 
 
 .btn-sm {
@@ -80,7 +101,72 @@ body {
       border-width: 1px;
 }
 
+.thumbnail-sm {
+      max-width: 48px;
+}
 
+#mc-btn-inside {
+      white-space: nowrap;
+      padding: 4px 8px 4px 8px;
+      /* display: inline-block !important; */
+}
+
+
+
+.wallet-btn {
+      padding: 0.5rem;
+      margin: 14px;
+      border: 3px solid rgb(255, 192, 203, 0.5);
+      border-radius: 0.5rem;
+      width: auto;
+      color: white;
+      background-color: rgb(238, 129, 238, 0.2);
+}
+
+.wallet-btn:hover {
+      padding: 0.5rem;
+      margin: 14px;
+      border: 3px solid rgb(255, 192, 203, 0.5);
+      border-radius: 0.5rem;
+      width: auto;
+      color: white;
+      background-color: rgb(238, 129, 238, 0.6);
+      cursor: pointer;
+}
+
+.wallet-btn img {
+      max-width: 20%;
+}
+
+
+
+
+
+
+
+
+.footer {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      color: #f0f0f0;
+      font-size: 1.25rem;
+      font-weight: 600;
+      max-width: 100%;
+      margin: 0 !important;
+}
+
+.social {
+      background-color: rgba(255, 255, 255, 0.05);
+      margin: 1rem;
+      padding: 1rem;
+}
+
+.CR {
+      width: 100%;
+      text-align: center;
+      font-size: 1rem;
+      color: #888888;
+}
 
 
 
