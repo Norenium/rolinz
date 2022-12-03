@@ -61,3 +61,9 @@ function Buy(ticket, price) {
             console.info(res)
       })
 }
+
+
+function GoDetail(id) {
+      $.cookie('tokenDetail', Number(id));
+      window.open('/detail.html');
+}

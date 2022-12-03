@@ -30,7 +30,7 @@ function metamaskOK() {
                   document.getElementById('coin-balance').innerHTML = balance;
                   document.getElementById('wallet-address').innerHTML = walletAddress;
                   var avatartIndex = Number((parseInt(walletAddress)).toString().substring(0, 1))
-                  document.getElementById('address-index').innerHTML = avatartIndex;
+                  //document.getElementById('address-index').innerHTML = avatartIndex;
                   //document.getElementById('avatar-image').src = 'assets/img/Avatars/Avatar(' + avatartIndex + ').svg';
 
             })
