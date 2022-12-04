@@ -107,7 +107,7 @@ function calcMint() {
       myContract.getMintPrices().then(function (res2) {
             // console.info(res2);
             // console.info(parseInt(res2[tier - 1]._hex));
-            tierPrice = Number(parseInt(res2[tier - 1]._hex) / 1000);
+            tierPrice = Number(parseInt(res2[tier - 1]._hex)) / 10 ** 18;
             // console.log('Mint price for the tier (' + tier + ') is: ' + tierPrice)
 
             //document.getElementById('btn-mint').attr('disabled',false);

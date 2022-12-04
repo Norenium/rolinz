@@ -1,6 +1,6 @@
 //Paste the contract address here.
 //You really should to go to f**k yourself if you don't know where to copy the contract addres from.
-const contractAddress = "0x014d0FD2f6860BE33aF0ccb6f7253D7677Ac8584";
+const contractAddress = "0xBA27aDF954beda17E81233E6D03B3c5AC4C6a994";
 
 //Development comments
 //Set the devLog to true to make the script comments in the log.
