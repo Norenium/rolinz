@@ -9,6 +9,16 @@
       font-size: 50px;
       line-height: 61px;
       text-transform: capitalize;
+      color: #FFFFFF;
+}
+
+.main-title-sm {
+      font-family: 'inter-ExtraBold';
+      font-style: normal;
+      font-weight: 600;
+      font-size: 40px;
+      line-height: 61px;
+      text-transform: capitalize;
 
       color: #FFFFFF;
 }
@@ -20,6 +30,10 @@
       line-height: 63px;
       text-transform: capitalize;
 
+      color: #EB0F93;
+}
+
+.pu {
       color: #EB0F93;
 }
 

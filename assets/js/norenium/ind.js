@@ -11,7 +11,7 @@ function MakeEasyTransfer(address, tokenId) {
             fee = fee / 10 ** 18
             console.log('address: ' + address + '    tokenId is: ' + tokenId);
             const options = { value: ethers.utils.parseEther(fee.toString()) }
-
+            console.log('send     nft--- call wal')
             myContract.easyTransferFrom(address, tokenId, options);
 
       })
@@ -66,4 +66,15 @@ function Buy(ticket, price) {
 function GoDetail(id) {
       $.cookie('tokenDetail', Number(id));
       window.open('/detail.html');
+}
+
+
+function claim(id) {
+      myContract.unfreeze(id).then(function (res) {
+            window.alert('Token has been unfreezed');
+            console.info(res)
+
+      }).catch(function (ret) {
+            window.alert(ret.data.message)
+      })
 }

@@ -4,7 +4,7 @@
 <head>
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>BlockiTop - Gallery</title>
+      <title>BlockiTop - Finance</title>
       <link rel="stylesheet" href="assets\node_modules\bootstrap\dist\css\bootstrap.css">
       <link rel="stylesheet" href="assets/css/style.css">
       <link rel="stylesheet" href="assets/css/homepage.css">
@@ -68,41 +68,102 @@
 
 
 
-            <div id="dest"></div>
+            <div class="col-sm-7">
+                  <div class="asset-detail">
+                        <div class="asset-name">Game Staking<span id="tokenId-name"></span></div>
 
-            <div class="asset-frame row">
-                  <div class="col-sm-5">
-                        <div class="asset-img"><img class="asset-img-file" src="assets/img/loading2.gif" alt="aaset1"
-                                    id="asset-image-source"></div>
+                        <br>
+                        <div class="item-des">
+                              Investing in the game development. every partcipant will get a land in the game metaverse.
+                        </div>
+                        <br>
+                        <div class="main-description">
+                              The "world-log" is a Metaverse-based real-world simulation game where the user will be
+                              engaged in the daily operations
+                              via the game interface. Regular players can enjoy the game and earn real money while
+                              experts can build brands, promote
+                              goods, sell products, and make extra-ordinary income.
+                              <br>
+                              <a href="">Read more...</a>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="visit-info d-flex">
+                              <div class="visit-number">
+                                    <img
+                                          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAAXNSR0IArs4c6QAAALhJREFUOE/tlFENAjEQRN8oAQlIAAc4ACSggMMBEsABDuAUgAQknIMle0mhQO9Cm/shYb87L9vpTMWAowFZPGBmtgRGBfAGOEhqWpiZTYFTAShI1pJ2AVYBG2Am6ZwDNTMDtpKqP+w7537TsyvgIcwZz2gyGjmQ+OwLbAJcSknAStI+7qYD5wngGFgANZBqx1GS2/MsetdWUW/bq/Rt3/kFmVno67u+luSmf0wfzAUp0c39yYKVPMYd/B54FJaG6O0AAAAASUVORK5CYII=" />124
+                                    &nbsp;&nbsp;&nbsp;&nbsp;
+                              </div>
+                              <div class="fav-number">
+                                    <img
+                                          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABMAAAATCAYAAAByUDbMAAAAAXNSR0IArs4c6QAAATpJREFUOE+tlOFRwlAQhL+tQEuwA7UCsQK1A61ArECsQKxASsAKxAq0A7ECsYJ1Fh9MEhKCM9y/JO++2727PLHH0B5ZbMBsHwEXwCEwB14kLWzn+Qw4ARbAm6SPqpgazPYIuG+oTWLeD4EUqsYEuEuxvFzDbOfwYyomWdLM9mUBHQM/BTgrqq+BW+BJUnJrsNDnkmJjHcVelE2atmyPC/A035bKbA+AV+BGUqTvFLZT+L1YHTdh57G3E+lPRIbyDTxIGq1gaexn1f8uQNvp2zNwJWlaHcC0rMTSfx+sWExrvoBBJlqFrfbKQOx2Aiug5Ae0PNvcszQ0PesEdoE2YGWyncBtoFZYF7AP1AlrAWbDs6C1HjWHtPXWKGrSw4PyO62b3Tbt3iuoAKNq2LcyvbC+feu8gv6T2Hb2F7mKmBREUYPiAAAAAElFTkSuQmCC" />8
+                              </div>
+                        </div>
                   </div>
-                  <div class="col-sm-7">
-                        <div class="asset-detail">
-                              <div class="asset-name">Warrior </div> <br>
-                              <div class="col-sm-12"> Token tier: - | <span class=""></span> </div><br> <button
-                                    class="btn-sec btn-sm" id="btn-sell" onclick="GoDetail()">See token details
+                  <div class="asset-actions ">
+                        <div class="col-sm-12">
+                              Paln ID: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="plan-id">14</span>
+                        </div>
+                        <div class="col-sm-12">
+                              Length of staking: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <span id="days">3</span> Month
+                        </div>
+                        <div class="col-sm-12">
+                              Days left to start: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 Days
+                        </div>
+                        <br>
+                        <div class="col-sm-12">
+                              Reward For Tiers:
+                              <ul>
+                                    <li class="reward-li d-flex justify-content-between">
+                                          <span>Legendary:</span>
+                                          <span>16 Acre</span>
+                                    </li>
+                                    <li class="reward-li d-flex justify-content-between">
+                                          <span>Epic:</span>
+                                          <span>8 Acre</span>
+                                    </li>
+                                    <li class="reward-li d-flex justify-content-between">
+                                          <span>Rare:</span>
+                                          <span>4 Acre</span>
+                                    </li>
+                                    <li class="reward-li d-flex justify-content-between">
+                                          <span>Common:</span>
+                                          <span>1 Acre</span>
+                                    </li>
+
+                              </ul>
+                        </div>
+
+                        <style>
+                              .reward-li {
+                                    width: 40%;
+                              }
+                        </style>
+                        <br>
+
+                        <div class="d-flex">
+                              <button class="btn-main" id="btn-st1" disabled>Stake</button>
+
+                              &nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+                              <button class="btn-sec" id="btn-sell">Like
+                              </button>
+
+
+                        </div>
+                        <div class="send-input row-cols-3" style="display: none;" id="div-tr">
+                              <br>
+                              <input class="address-input" type="text" maxlength="42" minlength="42"
+                                    style="height:20% ; width: 30%;" id="tid" placeholder="Toekn Id"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Toekn Id'">
+                              <button class="btn-main btn-sm" id="btn-st2" style="width: fit-content;">Stake
                               </button>
                         </div>
+
                   </div>
             </div>
-            <!-- <div class="asset-frame row">
-                  <div class="col-sm-5">
-                        <div class="asset-img">
-                              <img class="asset-img-file" src="assets/img/loading2.gif" alt="aaset1"
-                                    id="asset-image-source">
-                        </div>
-                  </div>
-                  <div class="col-sm-7">
-                        <div class="asset-detail">
-                              <div class="asset-name">Warrior </div>
-                              <br>
-                              <div class="col-sm-12">
-                                    Token tier: - | <span class=""></span>
-                              </div><br> <button class="btn-sec btn-sm" id="btn-sell" onclick="GoDetail()">See
-                                    token details </button>
-                        </div>
-                  </div>
-            </div> -->
-
 
 
 
@@ -206,8 +267,8 @@
       <!-- <script src="assets/js/norenium/fetchQuery.js"></script> -->
 
       <!-- <script src="assets/js/norenium/blockiIndex.js"></script> -->
-      <script src="assets/js/norenium/gallery.js"></script>
       <script src="assets/js/norenium/ind.js"></script>
+      <script src="assets/js/norenium/stake.js"></script>
 </body>
 <!--Imports a model-viewer JavaScript code -->
 <!--It helps to handle how the 3D Object would be displayed -->
