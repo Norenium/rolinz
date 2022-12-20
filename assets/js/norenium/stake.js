@@ -1,5 +1,8 @@
 // For Staking page
-
+var a = 123, str = `---
+   a is: ${a}
+---`;
+console.log(str);
 var interval = setInterval(() => {
       if (isContractInit) {
             setTimeout(() => {

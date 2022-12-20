@@ -1,0 +1,493 @@
+<!-- #030B15 -->
+<!-- #00C4F4 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>BlockiTop - De-Fi Dashboard</title>
+      <link rel="stylesheet" href="assets\node_modules\bootstrap\dist\css\bootstrap.css">
+      <link rel="stylesheet" href="assets/css/fonts.css">
+      <link rel="stylesheet" href="assets/css/defi/style.css">
+</head>
+
+<body>
+
+
+      <br>
+
+      <nav class="navbar navbar-expand-lg nav-bg sticky-top">
+            <div class="container-fluid">
+                  <a class="navbar-brand" href="index.html">
+                        <img src="assets/img/nav-logo.png" alt="Blockitop logo">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation" style="color:#ffffff;">
+                        <img
+                              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAFFJREFUSEvtlEkKADAIA83/H52eu1APZQShnquTBaqAR/D9+IA04fqIbDuVdXkgaRK9OcABL+pPu/Ud4A7wDnAAHlF/AN4BDujfwXewJoD/pgNrVBgZX2h0sgAAAABJRU5ErkJggg==" />
+                  </button>
+                  <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+
+                        <div style="width: 30%;"></div>
+
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                              <div class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                                    <a class="nav-link nav-white" href="gallery">Transfer</a>
+                                    <a class="nav-link nav-white" href="marketplace.html">Swap</a>
+                                    <!-- <a class="nav-link nav-white" href="staking">Staking</a>
+                                    <a class="nav-link nav-white" href="whitepaper">Whitepaper</a> -->
+
+                              </div>
+                              <div class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                                    <button class="btn-sec d-inline-flex" id="cw-btn-1" style="padding: 14px 40px;">
+                                          <img
+                                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAMpJREFUSEvtlVERwjAQRHcVIAGQgAMcYAEUIAEk4ACkIAEJrQMcLJMMMG0600tzk34w9DfNvrvsJkdU/lhZH/MCJF0A7ACsHJ01AA4k70Hj28Fb/OgQ7m5tSK5TwBPAAsCG5KMUJElRmIzFdzvoLfwuQNIWwNUKQvERSQopWVpH6AGMeuU2ORVIO/kDIOlzIUd99pgcYnqzklQMsOLpNtkDqP7YnQGcrAoz11uScab0JpqkANlbBhqQNmgMBk5mZZN/m3cmTy4vY8ML7YWYGRQromsAAAAASUVORK5CYII=" />
+                                          &nbsp;&nbsp;
+                                          <span style="margin-top: 4px;">
+                                                Connect Wallet</span>
+                                    </button>
+                                    <div class="btn-sec" id="bal-frm" style="display: none; padding: 4px;">
+                                          <img class="thumbnail-sm" src="assets/img/TheCoin.svg"
+                                                style="max-height: 40px;" /> &nbsp;&nbsp;&nbsp; <span id="bal1"
+                                                style="margin-top: 6px"></span> &nbsp;&nbsp;&nbsp;
+
+
+                                    </div>
+                              </div>
+
+                        </div>
+
+                  </div>
+            </div>
+      </nav>
+
+
+
+
+
+      <div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+      </div>
+
+      <div class="home">
+            <div class="row">
+                  <div class="col-lg-1"></div>
+
+
+                  <div style="width:5% ;"></div>
+                  <div class="col-12  col-lg-4">
+                        <!-- <div class="d-flex justify-content-lg-start">
+                              <div class="h-title"> </div>
+                              <span class="h-title-text"> on Blockitop</span>
+                              <div class="h-title-e"> </div>
+
+                        </div> -->
+
+                        <div class="main-title">
+                              <span class="pu">De-Fi </span> Dashboard
+                        </div>
+                        <br>
+                        <p class="main-description">
+                              After you connect your wallet, you will have access to all financial instruments on
+                              blockitop, right here on dashboard.
+                        </p>
+                        <div class="d-flex">
+                              <button class="btn-sec d-inline-flex" id="cw-btn-2">
+                                    Connect Wallet
+                              </button>
+
+                        </div>
+                  </div>
+            </div>
+      </div>
+      <div>
+            <br>
+            <br>
+            <br id="top">
+
+            <br>
+            <br>
+            <br>
+      </div>
+
+
+      <br>
+      <br>
+      <br>
+      <!-- Dashboard content -->
+      <div id="dash-load" style="display: none;">
+            <div class="belt justify-content-center  ">
+
+                  <div class=" justify-content-center d-flex ">
+
+
+                        <b class="par-title" style="margin: 16px">Your balances...</b>
+
+                  </div>
+                  <div class=" justify-content-around d-flex" style="margin-top:16px ;">
+                        <div class="col-lg-2">d</div>
+                        <div class="col-lg-2 igo-cell">
+                              <div class="igo-num" style="color:#00C4F4 ;"><span id="bnb-bal">--</span></div>
+                              <div class="igo-desc">BNB</div>
+                        </div>
+                        <div class="col-lg-2 igo-cell">
+                              <div class="igo-num" style="color:#FA9501"><span id="dcp-bal">--</span></div>
+                              <div class="igo-desc">DCP</div>
+                        </div>
+
+                        <div class="col-lg-2 igo-cell">
+                              <div class="igo-num" style="color:#F81D44 ;"><span id="dcpn-bal">--</span></div>
+                              <div class="igo-desc">DCPN</div>
+                        </div>
+                        <div class="col-lg-2 igo-cell">
+                              <div class="igo-num" style="color:#12D176"><span id="eth-bal">--</span></div>
+                              <div class="igo-desc">ETH</div>
+                        </div>
+                        <div class="col-lg-2"></div>
+
+                  </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <!-- Transaction History -->
+
+
+            <div class="action">
+                  <div class="action-box">
+                        <div class="justify-content-between d-flex">
+                              <div class="col-lg-9">
+                                    <div class="action-header">Transaction History</div>
+                                    <div class="action-desc">You can see latest 20 transactions of
+                                          <span class="pu"> your own address </span> in blockitop here.
+                                    </div>
+
+                              </div>
+                              <div>
+                                    <br>
+                                    <br>
+                                    <button class="btn-main">View on bscscan</button>
+                              </div>
+                        </div>
+                        <br><br>
+                        <div class="hline"></div>
+                        <br> <br>
+                        <br> <br>
+                        <div class="hline-2"></div>
+
+                        <div class=" justify-content-between d-flex" style="width: 70%; margin: 8px;">
+
+                              <b>Tx Hash</b>
+                              <b>Method</b>
+                              <b>block</b>
+                              <b>age</b>
+                              <b>From</b>
+                              <b> </b>
+                              <b>To</b>
+                              <b>Value</b>
+                              <b>Tx Fee</b>
+                        </div>
+
+
+
+                        <div class="hline-2"></div>
+                        <br>
+                        <div>
+                              <div class="tx-frame justify-content-between d-flex">
+                                    <div style="margin-top: 2px;">
+                                          <td>
+                                                <a
+                                                      href="https://testnet.bscscan.com/tx/0xeff7a9718fd348bb773ff1c8cce30e1429eba10f69e18346d308e2caa7ae2ac4">
+                                                      0xeff7a9718fd3...</a>
+                                          </td>
+                                          <td>
+                                                <span class="tx-method">Unfreeze</span>
+                                          </td>
+                                          <td>
+                                                <span class="tx-block">25846957</span>
+                                          </td>
+                                          <td>
+                                                <span class="tx-age">3 days 6 hrs ago</span>
+                                          </td>
+                                          <td>
+                                                <a
+                                                      href="https://testnet.bscscan.com/tx/0xeff7a9718fd348bb773ff1c8cce30e1429eba10f69e18346d308e2caa7ae2ac4">
+                                                      0xeff7a9718fd3...</a>
+                                          </td>
+                                          <td>
+                                                <span class="tx-dir">In</span>
+                                          </td>
+                                          <td>
+                                                <a
+                                                      href="https://testnet.bscscan.com/tx/0xeff7a9718fd348bb773ff1c8cce30e1429eba10f69e18346d308e2caa7ae2ac4">
+                                                      0xeff7a9718fd3...</a>
+                                          </td>
+
+                                          <td>
+                                                <span class="tx-block">0BNB</span>
+                                          </td>
+
+                                          <td>
+                                                <span class="tx-fee">0.00315</span>
+                                          </td>
+                                    </div>
+                                    <div>
+                                          <div class="justify-content-end d-flex">
+                                                <button class="btn-main btn-sm">bscscan</button>
+
+
+                                          </div>
+                                    </div>
+                              </div>
+                              <div class="tx-frame justify-content-between d-flex">
+                                    <div style="margin-top: 2px;">
+                                          <td>
+                                                <a
+                                                      href="https://testnet.bscscan.com/tx/0xeff7a9718fd348bb773ff1c8cce30e1429eba10f69e18346d308e2caa7ae2ac4">
+                                                      0xeff7a9718fd3...</a>
+                                          </td>
+                                          <td>
+                                                <span class="tx-method">Unfreeze</span>
+                                          </td>
+                                          <td>
+                                                <span class="tx-block">25846957</span>
+                                          </td>
+                                          <td>
+                                                <span class="tx-age">3 days 6 hrs ago</span>
+                                          </td>
+                                          <td>
+                                                <a
+                                                      href="https://testnet.bscscan.com/tx/0xeff7a9718fd348bb773ff1c8cce30e1429eba10f69e18346d308e2caa7ae2ac4">
+                                                      0xeff7a9718fd3...</a>
+                                          </td>
+                                          <td>
+                                                <span class="tx-dir">In</span>
+                                          </td>
+                                          <td>
+                                                <a
+                                                      href="https://testnet.bscscan.com/tx/0xeff7a9718fd348bb773ff1c8cce30e1429eba10f69e18346d308e2caa7ae2ac4">
+                                                      0xeff7a9718fd3...</a>
+                                          </td>
+
+                                          <td>
+                                                <span class="tx-block">0BNB</span>
+                                          </td>
+
+                                          <td>
+                                                <span class="tx-fee">0.00315</span>
+                                          </td>
+                                    </div>
+                                    <div>
+                                          <div class="justify-content-end d-flex">
+                                                <button class="btn-main btn-sm">bscscan</button>
+
+
+                                          </div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+
+
+
+
+
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <!-- TRANSFER -->
+            <div class="action">
+                  <div class="action-box">
+
+                        <div class="action-header">Transfer Delta</div>
+                        <div class="action-desc">You can easily transfer your delta balance here. </div>
+
+                        <br>
+                        <div class="hline"></div>
+                        <br>
+                        <label for="">Receiver wallet address</label>
+                        <br>
+                        <input class="address-input" type="text" maxlength="42" minlength="42" style=""
+                              id="send-address" placeholder="Destination address. like: 0x0cdfe......."
+                              onfocus="this.placeholder = ''"
+                              onblur="this.placeholder = 'Destination address. like: 0x0cdfe.......'">
+                        <br><br> <label for="">Amount</label>
+                        <br>
+                        <input class="address-input" type="number" max="999999999" min="1" style="width:20% ;"
+                              id="send-address" placeholder="Amount" onfocus="this.placeholder = ''"
+                              onblur="this.placeholder = 'Amount'">
+                        <button class="btn-main " id="btn-send" style="width: fit-content;">Send
+                        </button>
+
+                        <br>
+                        <br>
+                        <br>
+                        <div class="action-desc">ATTENTION: Before transfering token to an address (specially a contract
+                              address) make
+                              sure that receiver is a valid user. Lost tokens can't be recover in BEP20.</div>
+
+                  </div>
+            </div>
+
+
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- BUY -->
+            <div class="action">
+                  <div class="action-box">
+
+                        <div class="action-header">Buy Delta</div>
+                        <div class="action-desc">You can easily Buy delta here. </div>
+
+                        <br>
+                        <div class="hline"></div>
+                        <div class="row">
+                              <div class="col-lg-6">
+                                    <br><br> <label for="">Amount</label>
+                                    <br>
+                                    <input class="address-input" type="number" max="999999999" min="1"
+                                          style="width:20% ;" id="buy-delta" placeholder="Amount"
+                                          onfocus="this.placeholder = ''" onblur="this.placeholder = 'Amount'">
+                                    <button class="btn-main " id="btn-send" style="width: fit-content;">Send
+                                    </button>
+                              </div>
+                              <div class="col-lg-5">
+                                    <br>
+                                    <br>
+                                    <br>
+                                    Price: <span id="buy-price">0</span> BNB + Gas fee
+                              </div>
+                        </div>
+
+                        <script>
+                              document.getElementById('buy-delta').addEventListener('input', function () {
+                                    var am = document.getElementById('buy-delta').value;
+                                    document.getElementById('buy-price').innerHTML = Math.round((Number(am)) * 0.03 * 100) / 100
+                              })
+                        </script>
+                        <br>
+
+                  </div>
+            </div>
+
+
+
+            <br>
+            <br>
+            <br>
+            <br>
+            <!-- BATCH TRANSFER -->
+            <div class="action">
+                  <div class="action-box">
+
+                        <div class="action-header">Batch Transfer</div>
+                        <div class="action-desc">You can easily Transfer varius amounts of Delta to different addresses.
+                        </div>
+
+                        <br>
+                        <div class="hline"></div>
+                        <br>
+                        <label for="">Receiver wallet address as an Array</label>
+                        <br>
+                        <input class="address-input" type="text" maxlength="42" minlength="42" style=""
+                              id="send-address" placeholder="Destination address. like: 0x0cdfe......."
+                              onfocus="this.placeholder = ''"
+                              onblur="this.placeholder = 'Destination address. like: 0x0cdfe.......'"><br>
+                        <div class="action-note"> Paste address array like this:
+                              ["0x0address1...","0x0address2...","0x0address3...",...]</div>
+                        <br><br> <label for="">Amounts as array</label>
+
+
+                        <br>
+                        <input class="address-input" type="number" max="999999999" min="1" style="width:20% ;"
+                              id="send-address" placeholder="Amount" onfocus="this.placeholder = ''"
+                              onblur="this.placeholder = 'Amount'">
+                        <button class="btn-main " id="btn-send" style="width: fit-content;">Send
+                        </button><br>
+                        <div class="action-note"> Paste amounts array like this: [300,450,4960,...]</div>
+
+                        <br>
+                        <br>
+                        <br>
+                        <div class="action-desc">ATTENTION: The length of address array and amount array must be same.
+                        </div>
+
+                  </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <br>
+      </div>
+      <!-- 
+CALL FOR TRANSACTION POOL:
+https://api-testnet.bscscan.com/api?module=account&action=txlist&address=0xBA27aDF954beda17E81233E6D03B3c5AC4C6a994&startblock=25151911&endblock=99999999&sort=dec&apikey=YourApiKeyToken -->
+
+
+
+
+
+
+      <div class="footer-gg">
+            <div class="footer-body" style="padding: 0px;">
+
+                  <div class="footer-border">
+                        <div class="footer-body">
+
+                              <br>
+                              <!-- <p class="nav-white">Something</p> -->
+
+                              <br>
+                              <p class="nav-white">Something</p>
+
+                              <br>
+                              <p class="nav-white">Something</p>
+
+                              <br>
+                              <p class="nav-white">Something</p>
+                        </div>
+                  </div>
+            </div>
+      </div>
+
+</body>
+<!--Imports a model-viewer JavaScript code -->
+<!--It helps to handle how the 3D Object would be displayed -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>
+
+
+
+<script src="assets/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+<script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4="
+      crossorigin="anonymous"></script>
+<script src="assets/js/norenium/ERC20/ERC20.js"></script>
+<script src="assets/js/norenium/ERC20/onPageWalletERC20.js"></script>
+<script src="assets/js/norenium/ERC20/dashboardManagerERC20.js"></script>
+
+
+</html>

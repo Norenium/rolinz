@@ -58,3 +58,6 @@ function getPrice(id) {
 function getTokenOwner(id) {
       myContract.ownerOf(id).then(function (ow) { return ow })
 }
+
+
+

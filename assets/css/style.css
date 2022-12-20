@@ -62,8 +62,22 @@ body {
       cursor: not-allowed;
 }
 
+.btn-main:hover:disabled {
+      background-color: #1d1a3b;
+      color: #888787;
+      border: none;
+      cursor: not-allowed;
+}
+
 .btn-main:hover:enabled {
       cursor: pointer;
+      color: #ffffff !important;
+      background-color: #3d33aa;
+}
+
+.btn-main:hover {
+      cursor: pointer;
+      color: #ffffff !important;
       background-color: #3d33aa;
 }
 
@@ -94,7 +108,11 @@ body {
       cursor: not-allowed;
 }
 
-
+.btn-sec:hover {
+      background-color: #ffffff14 !important;
+      cursor: pointer;
+      color: #ffffff;
+}
 
 .btn-sm {
       padding: 9px 15px 9px 15px;
@@ -156,9 +174,14 @@ body {
 }
 
 .social {
-      background-color: rgba(255, 255, 255, 0.05);
+      /* background-color: rgba(255, 255, 255, 0.05); */
       margin: 1rem;
-      padding: 1rem;
+      padding: 1.5rem;
+}
+
+.social-title {
+      color: #f0f0f0;
+      font-size: 1.25rem;
 }
 
 .CR {
