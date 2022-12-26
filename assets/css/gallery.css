@@ -78,7 +78,10 @@
 }
 
 .asset-img-2 {
-      max-width: 60%;
+      max-width: 250px;
+      justify-content: center;
+      text-align: center;
+      justify-items: center;
 }
 
 

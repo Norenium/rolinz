@@ -32,24 +32,72 @@ function fetchAll() {
       })
 }
 
-function writeAll(number) {
-      for (let i = 1; i <= number; i++) {
+function writeAll() {
+      for (let i = 1; i <= 21; i++) {
+            var tr = getTierGallery(i);
+            var trn = getTierNameGallery(tr);
+            var ell =
+                  `<div id="${i}" class="item-big-frame">
+                        <div class="asset-frame row">
+                              <div class="col-sm-4 col-xs-12 text-center">
+                                    <div class="asset-img-2">
+                                          <img class="asset-img-file" src="assets/img/Warrior-Collection/assets/${i}.png"
+                                                alt="warrior#${i}"  >
+                                    </div>
+                              </div>
+                              <div class="col-sm-8 col-xs-12">
+                                    <div class="asset-detail">
+                                          <div class="asset-name">Warrior #${i}</div>
+                                          <br>
+                                          <div class="col-sm-12">
+                                                Token tier: ${tr} | <span class="${trn}">${trn}</span>
+                                          </div>
 
-            var path = "/assets/metadata/" + i + ".json"
-            var metadata;
-            var ell;
-            $.getJSON(path, function (json) {
-                  console.log(json); // this will show the info it in firebug console
-                  metadata = json;
-                  metadata.tierId = Math.random();
-                  metadata.tier = 'Common';
+                                          <div class="col-sm-12">
+                                                IPFS: <a
+                                                      href="https://ipfs.io/ipfs/QmQagekYwLq23wawBqD5Fq3Ndj483KsjLVuyvCENLK3UH1/${i}.png">https://ipfs.io/ipfs/QmQagekYwLq23wawBqD5Fq3Ndj483KsjLVuyvCENLK3UH1/${i}.png</a>
+                                          </div>
 
-                  ell = '<div class="asset-frame row" id="' + i + '"> <div class="col-sm-5"><div class="asset-img-2"><img class="asset-img-file" src="assets/img/ti/' + i + '.png" alt="NFT-number-' + i + '"  ></div></div> <div class="col-sm-7"> <div class="asset-detail"> <div class="asset-name">Warrior ' + metadata.name + '</div> <br> ' +
-                        '<div class="col-sm-12"> Token tier: ' + metadata.tierId + ' | <span class="' + metadata.tier + '">' + metadata.tier + '</span> </div><br> <button class="btn-sec btn-sm" id="btn-sell" onclick="GoDetail(' + i + ')">See token details </button> </div> </div> </div>'
-                  //assset-descr
-                  //document.getElementById('assset-descr').innerHTML += metadata.description;
-                  document.getElementById('dest').innerHTML += ell
 
-            });
+                                          <br> <button class="btn-sec btn-sm" id="btn-sell" onclick="GoDetail(${i})">See
+                                                token details </button>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>`
+
+            document.getElementById('rrs').innerHTML += ell
+
+      }
+}
+
+
+
+function getTierGallery(i) {
+      var trb = [8, 14, 18]
+      if (i <= trb[0]) {
+            return 4
+      }
+      if (i <= trb[1]) {
+            return 3
+      }
+      if (i <= trb[2]) {
+            return 2
+      }
+      return 1
+}
+
+
+function getTierNameGallery(i) {
+
+      switch (i) {
+            case 1:
+                  return 'Legendary'
+            case 2:
+                  return 'Epic'
+            case 3:
+                  return 'Rare'
+            case 4:
+                  return 'Common'
       }
 }

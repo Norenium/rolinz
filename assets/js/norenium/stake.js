@@ -32,9 +32,12 @@ function pageInit() {
                   sendFreeze(tid, days, planId, externaId)
 
 
+            })
 
-                  //var days = document.getElementById('sell-days').value;
-                  //ListToSell(tokenId, price, days);
+            document.getElementById('readmore-btn').addEventListener('click', function () {
+                  console.log('r m clock')
+                  document.getElementById('readmore-btn').style.display = 'none';
+                  document.getElementById('readmore-content').style.display = 'block';
             })
 
       }

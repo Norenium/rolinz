@@ -31,8 +31,8 @@
 
 .item-img-frm {
       margin: 0px;
-      border-radius: 9px;
-      background-color: #888888;
+      border-radius: 32px;
+      background-color: #88888855;
 }
 
 .item-img {
@@ -77,8 +77,9 @@
 .item-avatar {
       min-width: 40px;
       min-height: 40px;
-      max-width: 130px;
-      max-height: 130px;
+      max-width: 30px;
+      max-height: 30px;
+
 }
 
 .item-username {

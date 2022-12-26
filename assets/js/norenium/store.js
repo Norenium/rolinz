@@ -9,8 +9,43 @@ var interval = setInterval(() => {
       }
 }, 1000);
 
+document.getElementById('fnd').addEventListener('click', function () {
+      console.log('fnd click')
+      var id = document.getElementById('tid-find').value;
+      console.log('id is: ' + id)
+
+      var ddiv = document.getElementById('r' + id)
+
+      if (ddiv) {
+            console.log('row found' + ddiv)
+            $('html, body').animate({
+                  scrollTop: $('#r' + id).offset().top,
+                  duration: 3000
+            }, {
+                  duration: 200,
+                  step: function () {
+                        //console.log( "width: ", i++ );
+                        console.log($(this).width());
+                  },
+                  complete: function () {
+                        console.log("finished");
+                  }
+            });
+      } else {
+            console.log('row not found' + ddiv)
+      }
+})
 
 
+
+
+
+
+function ss() {
+      console.log('btn found clicked')
+      /*
+      */
+}
 
 
 function getStore() {
@@ -19,15 +54,20 @@ function getStore() {
             document.getElementById('loading').style.display = 'none';
             res.forEach(s => {
                   var can = '';
+                  console.info(s)
                   var id = parseInt(s[1]._hex)
 
-                  if (s.Owner == walletAddress) {
-                        can = '&nbsp;&nbsp;&nbsp;&nbsp;     <button class="btn-sec"  onclick="cancelSell(' + id + ')" >Cancel sell </button >'
+                  console.log(s.sold)
+                  console.log(s.canceled)
+                  if (!s.sold) {
+                        if (s.Owner == walletAddress) {
+                              can = '&nbsp;&nbsp;&nbsp;&nbsp;     <button class="btn-sec"  onclick="cancelSell(' + id + ')" >Cancel sell </button >'
+                        }
+                        var pr = (Number(parseInt(s[2]._hex))) / 10 ** 18
+                        document.getElementById('records').innerHTML += '<div class="sell-asset store-data row" id="r' + id + '">  <div class="col-sm-4 col-xs-12"> <div class="asset-img"> <img class="asset-img-file" src="assets/img/ti/' + id + '.png" alt="nft" ></div></div>' +
+                              '<div class="col-sm-7 col-xs-12" ><h2>Warrior #' + id + ' </h2> <p><b>Current owner:</b> ' + s.Owner + '</p> <p>Sell ticket id: ' + parseInt(s[0]._hex) + ' </p>  <p> Price:  ' + pr + ' BNB</p><p>TokenId: ' + parseInt(s[1]._hex) + '</p><p> Offer expires in: ' + convertUnixToTime(parseInt(s[3]._hex)) + '</p>' +
+                              '<div class="d-flex"> <button class="btn-main" id="btn-buy-' + id + '" onclick="Buy(' + parseInt(s[0]._hex) + ',' + pr + ')" >Buy it for ' + pr + ' BNB </button>&nbsp;&nbsp;&nbsp;&nbsp;     <button class="btn-sec" id="btn-detail-' + id + '" onclick="GoDetail(' + id + ')" >Token details </button > ' + can + '</div></div></div>'
                   }
-                  var pr = (Number(parseInt(s[2]._hex))) / 10 ** 18
-                  document.getElementById('records').innerHTML += '<div class="sell-asset store-data row">  <div class="col-sm-4 col-xs-12"> <div class="asset-img"> <img class="asset-img-file" src="assets/img/ti/' + id + '.png" alt="nft" ></div></div>' +
-                        '<div class="col-sm-7 col-xs-12" ><h2>Warrior #' + id + ' </h2> <p><b>Current owner:</b> ' + s.Owner + '</p> <p>Sell ticket id: ' + parseInt(s[0]._hex) + ' </p>  <p> Price:  ' + pr + ' BNB</p><p>TokenId: ' + parseInt(s[1]._hex) + '</p><p> Offer expires in: ' + convertUnixToTime(parseInt(s[3]._hex)) + '</p>' +
-                        '<div class="d-flex"> <button class="btn-main" id="btn-buy-' + id + '" onclick="Buy(' + parseInt(s[0]._hex) + ',' + pr + ')" >Buy it for ' + pr + ' BNB </button>&nbsp;&nbsp;&nbsp;&nbsp;     <button class="btn-sec" id="btn-detail-' + id + '" onclick="GoDetail(' + id + ')" >Token details </button > ' + can + '</div></div></div>'
             });
 
             JSON.stringify(res, null, 3)

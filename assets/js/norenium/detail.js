@@ -43,7 +43,7 @@ function fetch() {
                         document.getElementById('owner-address-box').style.display = 'block';
                         document.getElementById('asset-owner-usernameOrAddress').innerHTML = tokenOwnerAddress;
                         var avatartIndex = Number((parseInt(walletAddress)).toString().substring(0, 1))
-                        document.getElementById('address-index').innerHTML = avatartIndex;
+                        //document.getElementById('address-index').innerHTML = avatartIndex;
                         document.getElementById('avatar-image').src = 'assets/img/Avatars/Avatar(' + avatartIndex + ').svg';
                         if (walletAddress == tokenOwnerAddress) {
                               document.getElementById('btn-tr').removeAttribute("disabled")

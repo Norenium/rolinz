@@ -7,7 +7,7 @@ function addFooter() {
                   <div class="social col-sm-3">
                         <a class="navbar-brand" href="index.html">
 
-                              <img src="assets/img/nav-logo.png" alt="Bllockitop logo">
+                              <img src="assets/img/nav-logo.png" alt="Bllockitop logo"  style="max-width: 110%;">
                         </a>
                         <br>
                         <br>

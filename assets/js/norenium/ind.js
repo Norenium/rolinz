@@ -62,6 +62,7 @@ function Buy(ticket, price) {
       })
 }
 
+console.log('ind is loaded')
 
 function GoDetail(id) {
       $.cookie('tokenDetail', Number(id));
