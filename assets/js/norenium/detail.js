@@ -24,7 +24,7 @@ function fetch() {
       tokenId = getDetailCookie();
       console.log('cookie: ' + tokenId);//
       document.getElementById('tokenId-name').innerHTML = tokenId;
-      document.getElementById('asset-image-source').src = 'assets/img/ti/' + tokenId + '.png';
+      document.getElementById('asset-image-source').src = 'assets/img/Warrior-Collection/assets/' + tokenId + '.png';
 
       loadMetedata();
       myContract.isMinted(tokenId).then(function (result1) {
@@ -159,7 +159,7 @@ function getDetailCookie() {
 }
 
 function loadMetedata() {
-      var path = "/assets/metadata/" + tokenId + ".json"
+      var path = "/assets/img/Warrior-Collection/metadata/" + tokenId + ".json"
       var metadata;
       $.getJSON(path, function (json) {
             console.log(json); // this will show the info it in firebug console

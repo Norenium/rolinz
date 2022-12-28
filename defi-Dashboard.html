@@ -36,13 +36,13 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                               <div class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                                    <a class="nav-link nav-white" href="gallery">Transfer</a>
-                                    <a class="nav-link nav-white" href="marketplace.html">Swap</a>
+                                    <!-- <a class="nav-link nav-white" href="gallery">Transfer</a>
+                                    <a class="nav-link nav-white" href="marketplace.html">Swap</a> -->
                                     <!-- <a class="nav-link nav-white" href="staking">Staking</a>
                                     <a class="nav-link nav-white" href="whitepaper">Whitepaper</a> -->
 
                               </div>
-                              <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                              <div class="navbar-nav me-auto mb-2 mb-lg-0" id="btn-parent">
 
                                     <button class="btn-sec d-inline-flex" id="cw-btn-1" style="padding: 14px 40px;">
                                           <img
@@ -66,7 +66,29 @@
             </div>
       </nav>
 
+      <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert"
+            style="margin: 10px 100px; display: none !important;" id="alert-box">
+            <div class="d-flex align-items-centers ">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="bi flex-shrink-0 me-2" width="24" height="24"
+                        role="img" aria-label="Danger:" fill="currentColor"
+                        class="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16">
+                        <path
+                              d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                  </svg>
+                  <div>
+                        De-Fi is still in development
+                  </div>
+            </div>
+            <div id="close-alert" style="cursor: pointer;" onclick="clAl()">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-x-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                              d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+                  </svg>
+            </div>
 
+      </div>
 
 
 
@@ -452,29 +474,10 @@ https://api-testnet.bscscan.com/api?module=account&action=txlist&address=0xBA27a
 
 
 
-      <div class="footer-gg">
-            <div class="footer-body" style="padding: 0px;">
-
-                  <div class="footer-border">
-                        <div class="footer-body">
-
-                              <br>
-                              <!-- <p class="nav-white">Something</p> -->
-
-                              <br>
-                              <p class="nav-white">Something</p>
-
-                              <br>
-                              <p class="nav-white">Something</p>
-
-                              <br>
-                              <p class="nav-white">Something</p>
-                        </div>
-                  </div>
-            </div>
-      </div>
 
 </body>
+<script src="assets/js/norenium/ERC20/ercFooter.js"></script>
+
 <!--Imports a model-viewer JavaScript code -->
 <!--It helps to handle how the 3D Object would be displayed -->
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
@@ -486,6 +489,9 @@ https://api-testnet.bscscan.com/api?module=account&action=txlist&address=0xBA27a
 <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
 <script src="https://code.jquery.com/jquery-3.6.2.js" integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4="
       crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"
+      integrity="sha512-3j3VU6WC5rPQB4Ld1jnLV7Kd5xr+cq9avvhwqzbH/taCRNURoeEpoPBK9pDyeukwSxwRPJ8fDgvYXd6SkaZ2TA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="assets/js/norenium/ERC20/ERC20.js"></script>
 <script src="assets/js/norenium/ERC20/onPageWalletERC20.js"></script>
 <script src="assets/js/norenium/ERC20/dashboardManagerERC20.js"></script>

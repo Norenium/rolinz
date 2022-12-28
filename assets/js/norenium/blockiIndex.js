@@ -1,3 +1,23 @@
+
+// Mint prices  - Legendary - epic - rare - common   ---  in BNB
+var prs = new Array()
+
+// Minted tokens Array
+var ma = new Array()
+
+var intervalBI = setInterval(() => {
+      console.log('check')
+      if (isContractInit) {
+            setTimeout(() => {
+                  getPriceCookie();
+
+            }, 500);
+            clearInterval(intervalBI);
+      }
+}, 1000);
+
+
+
 function minte(id) {
       var tier;
       myContract.getTokenTier(id).then(function (res) {
@@ -58,31 +78,56 @@ function getPrice(id) {
 function getTokenOwner(id) {
       myContract.ownerOf(id).then(function (ow) { return ow })
 }
-setCollItems()
+
+
+
+
+
+function getPriceCookie() {
+      var cookie = $.cookie("mintPrices");
+      if (cookie == undefined) {
+
+            myContract.getMintPrices().then(function (res) {
+                  prs[0] = Number(parseInt(res[0]._hex)) / 10 ** 18;
+                  prs[1] = Number(parseInt(res[1]._hex)) / 10 ** 18;
+                  prs[2] = Number(parseInt(res[2]._hex)) / 10 ** 18;
+                  prs[3] = Number(parseInt(res[3]._hex)) / 10 ** 18;
+                  var expDate = new Date();
+                  expDate.setTime(expDate.getTime() + (1 * 60 * 1000));
+                  $.cookie("mintPrices", JSON.stringify(prs), { path: '/', expires: expDate })
+                  afterPrice()
+            })
+      } else {
+            prs = JSON.parse(cookie);
+            console.log('prs:  ' + prs)
+            afterPrice()
+      }
+}
+
+function afterPrice() {
+
+
+      // var int2 = setInterval(() => {
+      //       if (frn != 0) {
+      //             window.alert('frn:   ' + frn)
+      //             clearInterval(int2);
+      //       }
+      // }, 1000);
+
+      myContract.getAllMinted().then(function (res) {
+            ma = res;
+            console.log(ma)
+            setCollItems()
+
+      })
+
+
+}
+
+
 function setCollItems() {
 
-      // for (let i = 1; i <= 2; i++) {
-      //       var path = "assets/img/Warrior-Collection/metadata/" + i + ".png" + i + ".json"
-      //       var metadata;
-      //       var ell;
-
-
-      //       $.getJSON(path, function (json) {
-      //             console.log(json); // this will show the info it in firebug console
-      //             metadata = json;
-      //             metadata.tierId = Math.random();
-      //             metadata.tier = 'Common';
-
-      //             ell = '<div class="asset-frame row" id="' + i + '"> <div class="col-sm-5"><div class="asset-img-2"><img class="asset-img-file" src="assets/img/ti/' + i + '.png" alt="NFT-number-' + i + '"  ></div></div> <div class="col-sm-7"> <div class="asset-detail"> <div class="asset-name">Warrior ' + metadata.name + '</div> <br> ' +
-      //                   '<div class="col-sm-12"> Token tier: ' + metadata.tierId + ' | <span class="' + metadata.tier + '">' + metadata.tier + '</span> </div><br> <button class="btn-sec btn-sm" id="btn-sell" onclick="GoDetail(' + i + ')">See token details </button> </div> </div> </div>'
-      //             //assset-descr
-      //             //document.getElementById('assset-descr').innerHTML += metadata.description;
-      //             document.getElementById('dest').innerHTML += ell
-
-      //       });
-      // }
-
-      // var id = 5;
+      document.getElementById('coll-load').style.display = 'none';
 
       for (let j = 0; j < 21; j++) {
             var arr = [1, 9, 5, 19, 2, 10, 15, 20, 6, 11, 16, 3, 12, 17, 7, 21, 13, 4, 18, 8, 14]
@@ -97,7 +142,17 @@ function setCollItems() {
             var tr = getTier(i);
             var trprices = [1, 0.5, 0.1, 0.05]
             var mintPrice = trprices[tr - 1]
-            console.log('i: ' + i + '   trprice: ' + mintPrice)
+
+
+            var dis = '';
+            if (ma[i]) {
+                  dis = 'disabled'
+                  mintPrice = '--'
+            }
+
+
+
+            //console.log('i: ' + i + '   trprice: ' + mintPrice)
             var collItem =
                   `<div class="swiper-slide carousel-item2  col-lg-25">
                                           <div class="item-img-frm d-flex  justify-content-center">
@@ -139,7 +194,7 @@ function setCollItems() {
                                                             <button onclick="GoDetail(${i})" target="_blank"
                                                                   class="btn-sec  btn-sm">Details</button>
                                                             &nbsp;&nbsp;
-                                                            <button class="btn-main btn-sm"  disabled>Mint</button>
+                                                            <button class="btn-main btn-sm" ${dis} >Mint</button>
                                                       </div>
                                                 </div>
                                           </div>
@@ -148,12 +203,34 @@ function setCollItems() {
 
             document.getElementById('car-frame').innerHTML += collItem
 
-            console.log('COLL ITEM added number: ' + i)
+            //console.log('COLL ITEM added number: ' + i)
 
       }
       //tsc
       document.getElementById('tsc').innerHTML += swiper
 
+
+
+      var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 4,
+            slidesPerGroup: 4,
+            spaceBetween: 20,
+            centeredSlides: true,
+            speed: 2200,
+            loop: true,
+            autoplay: {
+                  delay: 2500,
+                  disableOnInteraction: false,
+            },
+            pagination: {
+                  el: '.swiper-pagination',
+                  clickable: true,
+            },
+            navigation: {
+                  nextEl: '.swiper-button-next',
+                  prevEl: '.swiper-button-prev',
+            },
+      });
 }
 
 function getTier(i) {
@@ -170,25 +247,3 @@ function getTier(i) {
       return 1
 }
 
-
-
-var swiper = new Swiper('.swiper-container', {
-      slidesPerView: 4,
-      slidesPerGroup: 1,
-      spaceBetween: 20,
-      centeredSlides: true,
-      speed: 2200,
-      loop: true,
-      autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-      },
-      pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-      },
-      navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-      },
-});

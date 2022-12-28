@@ -1,5 +1,25 @@
+// window.alert('Blockitop Defi is still in development.')
+AlertDefi()
+function AlertDefi() {
+      var cookie = $.cookie("closeAlert");
+      if (cookie == undefined) {
+            document.getElementById('alert-box').style.display = 'block';
+      }
 
+}
+document.getElementById('close-alert').addEventListener('click', clAl)
+function clAl() {
+      // document.getElementById('alert-box').style.display = 'none';
+      var expDate = new Date();
+      expDate.setTime(expDate.getTime() + (120 * 60 * 1000));
+      $.cookie("closeAlert", 'got it.', { path: '/', expires: expDate })
 
+      console.log(' alert added')
+      var elem = document.getElementById('alert-box');
+      elem.parentNode.removeChild(elem);
+      console.log('close alert')
+
+}
 
 
 //#region  WALLET FUNCTIONS CONTRACT INIT

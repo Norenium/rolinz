@@ -1,6 +1,6 @@
 //Paste the contract address here.
 //You really should to go to f**k yourself if you don't know where to copy the contract addres from.
-const contractAddress = "0xBA27aDF954beda17E81233E6D03B3c5AC4C6a994";
+const contractAddress = "0xeca7265Fd27540F256Bf1CF20624CCBeb5312a72";
 
 //Development comments
 //Set the devLog to true to make the script comments in the log.
@@ -308,6 +308,25 @@ var ABI = [
             "type": "function"
       },
       {
+            "inputs": [
+                  {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                  }
+            ],
+            "name": "freezePeriodLimits",
+            "outputs": [
+                  {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                  }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      },
+      {
             "inputs": [],
             "name": "getAllFreezeRecords",
             "outputs": [
@@ -347,11 +366,29 @@ var ABI = [
                                     "internalType": "address",
                                     "name": "owner",
                                     "type": "address"
+                              },
+                              {
+                                    "internalType": "bool",
+                                    "name": "isClaimed",
+                                    "type": "bool"
                               }
                         ],
                         "internalType": "struct Decuple.TFI[]",
                         "name": "",
                         "type": "tuple[]"
+                  }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      },
+      {
+            "inputs": [],
+            "name": "getAllMinted",
+            "outputs": [
+                  {
+                        "internalType": "bool[]",
+                        "name": "",
+                        "type": "bool[]"
                   }
             ],
             "stateMutability": "view",
@@ -479,6 +516,62 @@ var ABI = [
             "type": "function"
       },
       {
+            "inputs": [
+                  {
+                        "internalType": "uint256",
+                        "name": "num",
+                        "type": "uint256"
+                  }
+            ],
+            "name": "getSellRecords",
+            "outputs": [
+                  {
+                        "components": [
+                              {
+                                    "internalType": "uint256",
+                                    "name": "SellId",
+                                    "type": "uint256"
+                              },
+                              {
+                                    "internalType": "uint256",
+                                    "name": "TokenId",
+                                    "type": "uint256"
+                              },
+                              {
+                                    "internalType": "uint256",
+                                    "name": "Price",
+                                    "type": "uint256"
+                              },
+                              {
+                                    "internalType": "uint256",
+                                    "name": "endTime",
+                                    "type": "uint256"
+                              },
+                              {
+                                    "internalType": "address",
+                                    "name": "Owner",
+                                    "type": "address"
+                              },
+                              {
+                                    "internalType": "bool",
+                                    "name": "sold",
+                                    "type": "bool"
+                              },
+                              {
+                                    "internalType": "bool",
+                                    "name": "canceled",
+                                    "type": "bool"
+                              }
+                        ],
+                        "internalType": "struct Decuple.SellRec[]",
+                        "name": "",
+                        "type": "tuple[]"
+                  }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      },
+      {
             "inputs": [],
             "name": "getServiceFees",
             "outputs": [
@@ -486,6 +579,19 @@ var ABI = [
                         "internalType": "uint256[]",
                         "name": "",
                         "type": "uint256[]"
+                  }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      },
+      {
+            "inputs": [],
+            "name": "getTimeStamp",
+            "outputs": [
+                  {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
                   }
             ],
             "stateMutability": "view",
@@ -624,7 +730,7 @@ var ABI = [
                   },
                   {
                         "internalType": "uint256",
-                        "name": "daysCount",
+                        "name": "minutesCount",
                         "type": "uint256"
                   }
             ],
@@ -759,6 +865,11 @@ var ABI = [
                         "internalType": "address",
                         "name": "owner",
                         "type": "address"
+                  },
+                  {
+                        "internalType": "bool",
+                        "name": "isClaimed",
+                        "type": "bool"
                   }
             ],
             "stateMutability": "view",
@@ -820,6 +931,25 @@ var ABI = [
             "name": "safeTransferFrom",
             "outputs": [],
             "stateMutability": "nonpayable",
+            "type": "function"
+      },
+      {
+            "inputs": [
+                  {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                  }
+            ],
+            "name": "sellPeriod",
+            "outputs": [
+                  {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                  }
+            ],
+            "stateMutability": "view",
             "type": "function"
       },
       {
@@ -893,6 +1023,19 @@ var ABI = [
             "inputs": [
                   {
                         "internalType": "uint256[]",
+                        "name": "day",
+                        "type": "uint256[]"
+                  }
+            ],
+            "name": "setFreezePeriodsLimit",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+      },
+      {
+            "inputs": [
+                  {
+                        "internalType": "uint256[]",
                         "name": "prices",
                         "type": "uint256[]"
                   }
@@ -924,6 +1067,19 @@ var ABI = [
                   }
             ],
             "name": "setSellLimits",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+      },
+      {
+            "inputs": [
+                  {
+                        "internalType": "uint256[]",
+                        "name": "mins",
+                        "type": "uint256[]"
+                  }
+            ],
+            "name": "setSellPeriods",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
@@ -1064,6 +1220,19 @@ var ABI = [
                         "internalType": "string",
                         "name": "",
                         "type": "string"
+                  }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      },
+      {
+            "inputs": [],
+            "name": "totalSupply",
+            "outputs": [
+                  {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
                   }
             ],
             "stateMutability": "view",
