@@ -9,9 +9,9 @@
 
 StartContract();
 var n = provider.getBlockNumber().then(function (ret) {
-      console.info(ret)
+      //console.info(ret)
       var nn = provider.getNetwork();
-      console.info(nn);
+      //console.info(nn);
 });
 
 var balance;
@@ -24,7 +24,7 @@ function metamaskOK() {
             ensAddress = res.ensAddress;
             document.getElementById('coin-name').innerHTML = res.name;
             provider.getBalance(walletAddress).then(function (res2) {
-                  console.info(res2);
+                  //console.info(res2);
                   balance = ethers.utils.formatEther(res2._hex);
                   //document.getElementById('network-balance').innerHTML = res2.balance;
                   document.getElementById('coin-balance').innerHTML = balance;

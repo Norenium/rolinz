@@ -4,9 +4,10 @@
 
 
 function MakeEasyTransfer(address, tokenId) {
+
       var fee;
-      myContract.getServiceFees().then(function (res) {
-            fee = res[1];
+      myContract.easyFee(getTier(tokenId) - 1).then(function (res) {
+            fee = res;
             console.log('transfer fee is: ' + fee);
             fee = fee / 10 ** 18
             console.log('address: ' + address + '    tokenId is: ' + tokenId);
@@ -18,7 +19,7 @@ function MakeEasyTransfer(address, tokenId) {
 }
 
 function ListToSell(tokenId, Price, Days) {
-      console.log('***************')
+      //console.log('***************')
 
       var prc = Price * 10 ** 18;
       myContract.getSellLimits().then(function (res) {
@@ -45,6 +46,9 @@ function ListToSell(tokenId, Price, Days) {
                   console.info(ret)
                   window.alert('Listing request has been sent.')
 
+            }).catch(function (rett) {
+                  console.info(rett)
+                  window.alert(rett.data.message)
             })
 
       })
@@ -62,7 +66,7 @@ function Buy(ticket, price) {
       })
 }
 
-console.log('ind is loaded')
+//console.log('ind is loaded')
 
 function GoDetail(id) {
       $.cookie('tokenDetail', Number(id));
@@ -79,3 +83,20 @@ function claim(id) {
             window.alert(ret.data.message)
       })
 }
+
+
+
+function getTier(i) {
+      var trb = [8, 14, 18]
+      if (i <= trb[0]) {
+            return 4
+      }
+      if (i <= trb[1]) {
+            return 3
+      }
+      if (i <= trb[2]) {
+            return 2
+      }
+      return 1
+}
+

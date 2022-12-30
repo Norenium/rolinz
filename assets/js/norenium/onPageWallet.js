@@ -7,7 +7,7 @@
 
 function StartContract() {
       return new Promise(() => {
-            console.log('Contract start. checking for metamask.')
+            //console.log('Contract start. checking for metamask.')
             checkForMetamask().then(step1 => {
                   if (step1) {
                         tryInitContract().then(step2 => {

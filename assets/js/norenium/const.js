@@ -1,12 +1,13 @@
 //Paste the contract address here.
 //You really should to go to f**k yourself if you don't know where to copy the contract addres from.
-const contractAddress = "0xeca7265Fd27540F256Bf1CF20624CCBeb5312a72";
+const contractAddress = "0x51d7fdf2A714139C9F402E708482a2e60078B677";
 
 //Development comments
 //Set the devLog to true to make the script comments in the log.
 const devLog = true;
 
-
+// First mainnet deployement address:
+//0x51d7fdf2A714139C9F402E708482a2e60078B677
 
 //Paste the contract ABI here. 
 //You can copy the ABI from remix compiler > Solidity Compiler tab > ( in the left side menu) ABI 
@@ -245,6 +246,25 @@ var ABI = [
       {
             "inputs": [
                   {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                  }
+            ],
+            "name": "easyFee",
+            "outputs": [
+                  {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                  }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      },
+      {
+            "inputs": [
+                  {
                         "internalType": "address",
                         "name": "to",
                         "type": "address"
@@ -258,6 +278,19 @@ var ABI = [
             "name": "easyTransferFrom",
             "outputs": [],
             "stateMutability": "payable",
+            "type": "function"
+      },
+      {
+            "inputs": [],
+            "name": "ercTokenAddress",
+            "outputs": [
+                  {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                  }
+            ],
+            "stateMutability": "view",
             "type": "function"
       },
       {
@@ -395,6 +428,56 @@ var ABI = [
             "type": "function"
       },
       {
+            "inputs": [],
+            "name": "getAllSellRecords",
+            "outputs": [
+                  {
+                        "components": [
+                              {
+                                    "internalType": "uint256",
+                                    "name": "SellId",
+                                    "type": "uint256"
+                              },
+                              {
+                                    "internalType": "uint256",
+                                    "name": "TokenId",
+                                    "type": "uint256"
+                              },
+                              {
+                                    "internalType": "uint256",
+                                    "name": "Price",
+                                    "type": "uint256"
+                              },
+                              {
+                                    "internalType": "uint256",
+                                    "name": "endTime",
+                                    "type": "uint256"
+                              },
+                              {
+                                    "internalType": "address",
+                                    "name": "Owner",
+                                    "type": "address"
+                              },
+                              {
+                                    "internalType": "bool",
+                                    "name": "sold",
+                                    "type": "bool"
+                              },
+                              {
+                                    "internalType": "bool",
+                                    "name": "canceled",
+                                    "type": "bool"
+                              }
+                        ],
+                        "internalType": "struct Decuple.SellRec[]",
+                        "name": "",
+                        "type": "tuple[]"
+                  }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      },
+      {
             "inputs": [
                   {
                         "internalType": "uint256",
@@ -460,56 +543,6 @@ var ABI = [
                         "internalType": "uint256[]",
                         "name": "",
                         "type": "uint256[]"
-                  }
-            ],
-            "stateMutability": "view",
-            "type": "function"
-      },
-      {
-            "inputs": [],
-            "name": "getSellRecords",
-            "outputs": [
-                  {
-                        "components": [
-                              {
-                                    "internalType": "uint256",
-                                    "name": "SellId",
-                                    "type": "uint256"
-                              },
-                              {
-                                    "internalType": "uint256",
-                                    "name": "TokenId",
-                                    "type": "uint256"
-                              },
-                              {
-                                    "internalType": "uint256",
-                                    "name": "Price",
-                                    "type": "uint256"
-                              },
-                              {
-                                    "internalType": "uint256",
-                                    "name": "endTime",
-                                    "type": "uint256"
-                              },
-                              {
-                                    "internalType": "address",
-                                    "name": "Owner",
-                                    "type": "address"
-                              },
-                              {
-                                    "internalType": "bool",
-                                    "name": "sold",
-                                    "type": "bool"
-                              },
-                              {
-                                    "internalType": "bool",
-                                    "name": "canceled",
-                                    "type": "bool"
-                              }
-                        ],
-                        "internalType": "struct Decuple.SellRec[]",
-                        "name": "",
-                        "type": "tuple[]"
                   }
             ],
             "stateMutability": "view",
@@ -630,6 +663,19 @@ var ABI = [
                         "internalType": "string",
                         "name": "",
                         "type": "string"
+                  }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      },
+      {
+            "inputs": [],
+            "name": "geteasyFee",
+            "outputs": [
+                  {
+                        "internalType": "uint256[]",
+                        "name": "",
+                        "type": "uint256[]"
                   }
             ],
             "stateMutability": "view",
@@ -816,6 +862,19 @@ var ABI = [
                         "internalType": "address",
                         "name": "",
                         "type": "address"
+                  }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+      },
+      {
+            "inputs": [],
+            "name": "payBonus",
+            "outputs": [
+                  {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
                   }
             ],
             "stateMutability": "view",
@@ -1015,6 +1074,45 @@ var ABI = [
                   }
             ],
             "name": "setApprovalForAll",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+      },
+      {
+            "inputs": [
+                  {
+                        "internalType": "bool",
+                        "name": "state",
+                        "type": "bool"
+                  }
+            ],
+            "name": "setBonus",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+      },
+      {
+            "inputs": [
+                  {
+                        "internalType": "address",
+                        "name": "adr",
+                        "type": "address"
+                  }
+            ],
+            "name": "setERCAddress",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+      },
+      {
+            "inputs": [
+                  {
+                        "internalType": "uint256[]",
+                        "name": "prices",
+                        "type": "uint256[]"
+                  }
+            ],
+            "name": "setEasyFees",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"

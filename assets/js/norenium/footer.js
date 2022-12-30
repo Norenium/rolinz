@@ -162,7 +162,7 @@ function addFooter() {
             </nav>`
       var bd = document.body.innerHTML;
       document.body.innerHTML = nav + bd + st
-      console.log('body added')
+      //console.log('body added')
 }
 
 
