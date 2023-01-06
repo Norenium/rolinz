@@ -39,10 +39,10 @@
                               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                     <div class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                                          <a class="nav-link nav-white" href="gallery">Gallery</a>
+                                          <a class="nav-link nav-white" href="gallery.html">Gallery</a>
                                           <a class="nav-link nav-white" href="marketplace.html">Marketplace</a>
-                                          <a class="nav-link nav-white" href="staking">Staking</a>
-                                          <a class="nav-link nav-white" href="whitepaper">Whitepaper</a>
+                                          <a class="nav-link nav-white" href="staking.html">Staking</a>
+                                          <a class="nav-link nav-white" href="whitepaper.html">Whitepaper</a>
 
 
                                     </div>
@@ -108,19 +108,18 @@
                                     <br>
                               </div>
                               <div class="btn-sec  d-inline-flex">
-                                    Check On OpenSea.io
+                                    <a class="link-btn-text" target="_blank"
+                                          href="https://opensea.io/collection/blockitop"> Check On
+                                          OpenSea.io</a>
                               </div>
                               <br>
                               <br>
                               <br>
                               <div style="max-width: 60%;">
                                     <p class="main-description" style="font-size: smaller; line-height: 0.9rem;">
-                                          You can investigate all the features, get
-                                          involved in details,
-                                          and plan your
-                                          investment based on a set of solid and reliable knowledge which you gained
-                                          here all
-                                          by yourself.
+                                          You can check all the features, get involved in details, and plan your
+                                          investment based on the solid and reliable
+                                          knowledge you gained here.
                                     </p>
                               </div>
                         </div>
@@ -152,7 +151,8 @@
             <div class="coll-frame">
                   <div class="coll-header row">
                         <div class="coll-header-title  col">
-                              Warrior NFT Collection
+                              Warrior NFT Collection <span id="coll-load-3"><img src="assets/img/Rolling-30px.svg"
+                                          alt=""></span>
                         </div>
                         <div class="col d-flex flex-row-reverse">
                               <div>
@@ -167,7 +167,7 @@
 
             <!-- Collection Items -->
             <div class=" text-center nav-white" id="coll-load">
-                  <img src="assets/img/loading2.gif" style="width: 10vw;" alt="">
+                  <img src="assets/img/Rolling-200px (1).svg" style="width: 10vw;" alt="">
                   <br>
                   <br>
                   <p> Collection is loading... </p>
@@ -487,6 +487,7 @@
             <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
             <script src="https://code.jquery.com/jquery-3.6.2.js"
                   integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4=" crossorigin="anonymous"></script>
+
             <script id="tsc">
                   if (window.jQuery) {
                         console.log('$ is ok')
@@ -508,8 +509,39 @@
                               }
                         });
                   });
+                  var goFor = false;
+                  var theSwiperInt = setInterval(() => {
+                        console.log('fo for :' + goFor)
+
+                        if (goFor) {
+                              console.log('fo for =========' + goFor)
+                              var swiper = new Swiper('.swiper-container', {
+                                    slidesPerView: 4,
+                                    grabCursor: true,
+                                    slidesPerGroup: 2,
+                                    spaceBetween: 20,
+                                    centeredSlides: true,
+                                    speed: 2200,
+                                    loop: true,
+                                    autoplay: {
+                                          delay: 2500,
+                                          disableOnInteraction: false,
+                                    },
+                                    pagination: {
+                                          el: '.swiper-pagination',
+                                          clickable: true,
+                                    },
+                                    navigation: {
+                                          nextEl: '.swiper-button-next',
+                                          prevEl: '.swiper-button-prev',
+                                    },
+                              });
+
+                              clearInterval(theSwiperInt)
+                        }
 
 
+                  }, 1000);
 
             </script>
 
@@ -529,7 +561,8 @@
       <script src="assets/js/norenium/const.js"></script>
       <script src="assets/js/norenium/onPageWallet.js"></script>
       <script src="assets/js/norenium/indexManager.js"></script>
-      <script src="assets/js/norenium/blockiIndex.js"></script>
+      <!-- <script type="module" src="assets/js/DB.js"></script> -->
+      <script type="module" src="assets/js/norenium/blockiIndex.js"></script>
       <script src="assets/js/norenium/ind.js"></script>
 
 </body>

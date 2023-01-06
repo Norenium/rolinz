@@ -2,9 +2,12 @@
 //You really should to go to f**k yourself if you don't know where to copy the contract addres from.
 const contractAddress = "0x51d7fdf2A714139C9F402E708482a2e60078B677";
 
-//Development comments
-//Set the devLog to true to make the script comments in the log.
-const devLog = true;
+
+//Sets how long a cookie would be available in the browser. 
+const cookieExpirePeriod = 60; // Minutes
+
+//Sets how long data can be old.If data be older than this, a warning will be shown.
+const warningPeriod = 60; // Minutes
 
 // First mainnet deployement address:
 //0x51d7fdf2A714139C9F402E708482a2e60078B677

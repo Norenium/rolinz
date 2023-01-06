@@ -82,6 +82,15 @@ body {
 }
 
 
+.link-btn-text {
+      color: #ffffff;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 19px;
+      white-space: nowrap;
+      text-decoration: none;
+}
 
 .btn-sec {
       color: #ffffff;
@@ -221,6 +230,12 @@ body {
             left: 0;
             border: none;
       }
+
+      .marketing-content-subframe {
+            padding: 16px 0px 16px 32px !important;
+            color: #f0f0f0;
+            font-size: 1.1rem;
+      }
 }
 
 .main-subtitle {
@@ -263,4 +278,49 @@ html {
 
 .item-big-frame {
       padding-top: 4rem;
+}
+
+.marketing-content-frame {
+      /* background-color: rgba(255, 255, 255, 0.05);
+      padding: 12px; */
+      color: #f0f0f0;
+      font-size: 1.25rem;
+}
+
+.marketing-content-subframe {
+      /* background-color: rgba(255, 255, 255, 0.05);*/
+      padding: 16px 32px 16px 32px;
+      color: #f0f0f0;
+      font-size: 1.1rem;
+}
+
+.sub-header {
+      color: #ffffff;
+      text-shadow: 2px 2px 4px #BABABA;
+}
+
+.left-border {
+      border-left: #3d33aa55 4px solid;
+      padding-left: 12px;
+}
+
+.footnote-number {
+      color: #ffffff;
+      font-size: 0.75rem;
+      vertical-align: super;
+}
+
+.footnote {
+      color: #BABABA;
+      font-size: 0.9rem;
+      line-height: 0.7rem;
+      margin-left: 1rem;
+}
+
+.bullet::before {
+      content: ' ✓ ';
+}
+
+.bullet {
+      margin-right: 0.5rem;
 }

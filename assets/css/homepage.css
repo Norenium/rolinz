@@ -2,6 +2,10 @@
       padding: 40px;
 }
 
+.home-marketing {
+      padding: 20px;
+}
+
 .main-title {
       font-family: 'inter-ExtraBold';
       font-style: normal;
@@ -35,6 +39,7 @@
 
 .pu {
       color: #EB0F93;
+      text-shadow: #EB0F93 1px 1px 3px;
 }
 
 .main-description {

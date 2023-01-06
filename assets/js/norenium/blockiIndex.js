@@ -1,20 +1,35 @@
+import DB from "../DB.js"
+let db = new DB('info');
 
 // Mint prices  - Legendary - epic - rare - common   ---  in BNB
 var prs = new Array()
 
-// Minted tokens Array
+// Minted tokens Array and last time it updated
 var ma = new Array()
+var maut;
 
-var intervalBI = setInterval(() => {
-      console.log('check')
-      if (isContractInit) {
-            setTimeout(() => {
-                  getPriceCookie();
 
-            }, 500);
-            clearInterval(intervalBI);
-      }
-}, 1000);
+// Show Critical
+var ShowWarning = false;
+
+
+// Operation start point
+preparePrices();
+
+
+
+
+
+// var intervalBI = setInterval(() => {
+//       console.log('check')
+//       if (isContractInit) {
+//             setTimeout(() => {
+//                   getPriceCookie();
+
+//             }, 500);
+//             clearInterval(intervalBI);
+//       }
+// }, 1000);
 
 
 
@@ -63,6 +78,9 @@ function getPrice(id) {
             document.getElementById('token-tier-name-' + id).innerHTML = tiername;
 
             myContract.getMintPrices().then(function (res2) {
+                  // db.setDataAsync('mintPrices', res).then(function (res) {
+                  //       console.log('post res: ' + res)
+                  // })
                   console.info(parseInt(res2[0]._hex));
                   tierPrice = Number(parseInt(res2[0]._hex) / 1000);
 
@@ -83,51 +101,159 @@ function getTokenOwner(id) {
 
 
 
-function getPriceCookie() {
+function preparePrices() {
       var cookie = $.cookie("mintPrices");
-      if (cookie == undefined) {
 
-            myContract.getMintPrices().then(function (res) {
-                  prs[0] = Number(parseInt(res[0]._hex)) / 10 ** 18;
-                  prs[1] = Number(parseInt(res[1]._hex)) / 10 ** 18;
-                  prs[2] = Number(parseInt(res[2]._hex)) / 10 ** 18;
-                  prs[3] = Number(parseInt(res[3]._hex)) / 10 ** 18;
+      if (cookie == undefined) {
+            //if (true) {
+            var mintPricesFromAPI;
+            db.getDataAsync('mintPrices').then(function (Ares) {
+                  mintPricesFromAPI = Ares;
+
+                  var now = Number(Date.now())
+                  if (now > mintPricesFromAPI[4] + (warningPeriod * 60 * 1000)) {
+                        ShowWarning = true;
+                  }
+
                   var expDate = new Date();
-                  expDate.setTime(expDate.getTime() + (1 * 60 * 1000));
-                  $.cookie("mintPrices", JSON.stringify(prs), { path: '/', expires: expDate })
-                  afterPrice()
+                  expDate.setTime(expDate.getTime() + (cookieExpirePeriod * 60 * 1000));
+                  $.cookie("mintPrices", JSON.stringify(mintPricesFromAPI), { path: '/', expires: expDate })
+
+
+                  setTimeout(() => {
+                        if (isContractInit && ShowWarning) {
+                              myContract.getMintPrices().then(function (res) {
+                                    prs[0] = Number(parseInt(res[0]._hex)) / 10 ** 18;
+                                    prs[1] = Number(parseInt(res[1]._hex)) / 10 ** 18;
+                                    prs[2] = Number(parseInt(res[2]._hex)) / 10 ** 18;
+                                    prs[3] = Number(parseInt(res[3]._hex)) / 10 ** 18;
+                                    prs[4] = Date.now();
+
+                                    var expDate = new Date();
+                                    expDate.setTime(expDate.getTime() + (cookieExpirePeriod * 60 * 1000));
+                                    $.cookie("mintPrices", JSON.stringify(prs), { path: '/', expires: expDate })
+
+                                    db.setDataAsync('mintPrices', prs).then(function (res) {
+                                          console.log('post res on wallet : ' + res)
+                                    })
+                                    afterPrice()
+                              })
+                        } else {
+                              prs = mintPricesFromAPI;
+                              afterPrice()
+                        }
+                  }, 1000);
+
             })
-      } else {
+
+      }
+      else {
             prs = JSON.parse(cookie);
             console.log('prs:  ' + prs)
-            afterPrice()
+
+            var now = Number(Date.now())
+            if (now > prs[4] - (warningPeriod * 60 * 1000)) {
+                  ShowWarning = true;
+                  console.log(' its old data in cookie')
+
+
+                  setTimeout(() => {
+                        if (isContractInit && ShowWarning) {
+                              myContract.getMintPrices().then(function (res) {
+                                    prs[0] = Number(parseInt(res[0]._hex)) / 10 ** 18;
+                                    prs[1] = Number(parseInt(res[1]._hex)) / 10 ** 18;
+                                    prs[2] = Number(parseInt(res[2]._hex)) / 10 ** 18;
+                                    prs[3] = Number(parseInt(res[3]._hex)) / 10 ** 18;
+                                    prs[4] = Date.now();
+
+                                    var expDate = new Date();
+                                    expDate.setTime(expDate.getTime() + (cookieExpirePeriod * 60 * 1000));
+                                    $.cookie("mintPrices", JSON.stringify(prs), { path: '/', expires: expDate })
+
+                                    db.setDataAsync('mintPrices', prs).then(function (res) {
+                                          console.log('post res on wallet : ' + res)
+                                    })
+                                    afterPrice()
+                              })
+                        } else {
+                              prs = mintPricesFromAPI;
+                              afterPrice()
+                        }
+                  }, 1000);
+            } else {
+                  afterPrice()
+            }
       }
 }
 
+
 function afterPrice() {
 
+      var cookie = $.cookie('mintedArray');
+      console.log('cookie: ' + cookie)
+      console.log('prs: ' + prs)
 
-      // var int2 = setInterval(() => {
-      //       if (frn != 0) {
-      //             window.alert('frn:   ' + frn)
-      //             clearInterval(int2);
-      //       }
-      // }, 1000);
+      if (cookie == undefined) {
+            console.log('mintedArray cookie is undefined')
+            db.getDataAsync('mintedArray').then(function (res) {
+                  db.getDataAsync('mintedArrayUT').then(function (Tres) {
+                        console.log('mintedArray : ' + res);
+                        console.log('mintedArrayUT : ' + Tres);
+                        ma = res;
+                        maut = Tres;
 
-      myContract.getAllMinted().then(function (res) {
-            ma = res;
-            console.log(ma)
-            setCollItems()
+                        setCookieFor('mintedArray', ma)
 
-      })
 
+                        var now = Date.now()
+                        if (now > Tres + (warningPeriod * 2 * 1000)) {
+                              ShowWarning = true;
+                              setTimeout(() => {
+                                    if (isContractInit && ShowWarning) {
+                                          myContract.getAllMinted().then(function (Mres) {
+                                                ma = Mres
+                                                setCookieFor('mintedArray', ma)
+                                                db.setDataAsync('mintedArray', ma).then(function (res1) {
+                                                      db.setDataAsync('mintedArrayUT', now).then(function (res2) {
+                                                            setCollItems()
+                                                      })
+                                                })
+                                          })
+                                    } else {
+                                          setCollItems();
+                                    }
+                              }, 1000);
+                        }
+                  })
+            })
+      }
+      else {
+            ma = JSON.parse(cookie)
+            setCollItems();
+      }
+}
+
+
+function setCookieFor(name, val) {
+
+      var expDate = new Date();
+      expDate.setTime(expDate.getTime() + (cookieExpirePeriod * 60 * 1000));
+      $.cookie(name, JSON.stringify(val), { path: '/', expires: expDate })
 
 }
+
+
 
 
 function setCollItems() {
 
       document.getElementById('coll-load').style.display = 'none';
+      document.getElementById('coll-load-3').style.display = 'none';
+
+
+      console.log('start of setCollItems')
+      console.log('prs: ' + prs)
+      console.log('ma: ' + ma)
 
       for (let j = 0; j < 21; j++) {
             var arr = [1, 9, 5, 19, 2, 10, 15, 20, 6, 11, 16, 3, 12, 17, 7, 21, 13, 4, 18, 8, 14]
@@ -140,8 +266,8 @@ function setCollItems() {
 
             var i = arr[j];
             var tr = getTier(i);
-            var trprices = [1, 0.5, 0.1, 0.05]
-            var mintPrice = trprices[tr - 1]
+            var mintPrice = prs[tr - 1]
+
 
 
             var dis = '';
@@ -151,7 +277,10 @@ function setCollItems() {
             }
 
 
-
+            var display = 'none'
+            if (ma[i]) {
+                  display = 'block'
+            }
             //console.log('i: ' + i + '   trprice: ' + mintPrice)
             var collItem =
                   `<div class="swiper-slide carousel-item2  col-lg-25">
@@ -182,11 +311,15 @@ function setCollItems() {
 
                                                 <div class="item-action d-flex justify-content-between">
                                                       <div class="item-avatar-frm d-flex justify-content-between">
-                                                            <a href="https://opensea.io" target="_blank"
+                                                      <div>
+                                                      <div style="display:${display}">
+                                                            <a href="https://opensea.io/assets/bsc/0x51d7fdf2a714139c9f402e708482a2e60078b677/${i}" target="_blank"
                                                                   title="Check NFT on the Opensea">
                                                                   <img src="assets/img/OS.svg" alt="user avatar"
-                                                                        class="item-avatar"></a>
-
+                                                                        class="item-avatar">
+                                                            </a>
+                                                      </div>
+                                                      </div>
                                                             <p class="item-username">
                                                             </p>
                                                       </div>
@@ -207,31 +340,16 @@ function setCollItems() {
 
       }
       //tsc
-      document.getElementById('tsc').innerHTML += swiper
+      //document.getElementById('tsc').innerHTML += swiper
+      startSwiper()
 
-
-
-      var swiper = new Swiper('.swiper-container', {
-            slidesPerView: 4,
-            slidesPerGroup: 4,
-            spaceBetween: 20,
-            centeredSlides: true,
-            speed: 2200,
-            loop: true,
-            autoplay: {
-                  delay: 2500,
-                  disableOnInteraction: false,
-            },
-            pagination: {
-                  el: '.swiper-pagination',
-                  clickable: true,
-            },
-            navigation: {
-                  nextEl: '.swiper-button-next',
-                  prevEl: '.swiper-button-prev',
-            },
-      });
 }
+function startSwiper() {
+      goFor = true;
+
+      console.log('swiper start')
+}
+
 
 function getTier(i) {
       var trb = [8, 14, 18]

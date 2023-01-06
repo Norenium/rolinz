@@ -55,11 +55,11 @@ function addFooter() {
                         <div class="social-title">
                               Eplore More
                         </div>
-                        <a class="nav-link nav-white" href="gallery">Gallery</a>
+                        <a class="nav-link nav-white" href="gallery.html">Gallery</a>
                         <a class="nav-link nav-white" href="marketplace.html">Marketplace</a>
-                        <a class="nav-link nav-white" href="staking">Staking</a>
-                        <a class="nav-link nav-white" href="whitepaper">Whitepaper</a>
-                        <a class="nav-link nav-white" href="defi" title="Go to De-Fi panel">
+                        <a class="nav-link nav-white" href="staking">Staking.html</a>
+                        <a class="nav-link nav-white" href="whitepaper.html">Whitepaper</a>
+                        <a class="nav-link nav-white" href="defi.html" title="Go to De-Fi panel">
                               <br>
                               <div>
                                     <img src="assets/img/TheCoin.svg" alt="Delta"
