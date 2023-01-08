@@ -17,90 +17,6 @@ var ShowWarning = false;
 preparePrices();
 
 
-
-
-
-// var intervalBI = setInterval(() => {
-//       console.log('check')
-//       if (isContractInit) {
-//             setTimeout(() => {
-//                   getPriceCookie();
-
-//             }, 500);
-//             clearInterval(intervalBI);
-//       }
-// }, 1000);
-
-
-
-function minte(id) {
-      var tier;
-      myContract.getTokenTier(id).then(function (res) {
-            tier = ethers.utils.formatEther(res._hex);
-            //myContract.getMintPrice
-
-            const options = { value: ethers.utils.parseEther("1.0") }
-
-            console.log(options);
-            myContract.testMint(walletAddress, id, options).then(function (res2) {
-                  console.info(res2);
-
-            });
-      })
-}
-var tierPrice;
-
-function getPrice(id) {
-      myContract.getTokenTier(id).then(function (res) {
-            tier = parseInt(res._hex);
-            console.log('token-tier-' + id);
-            document.getElementById('token-tier-' + id).innerHTML = tier;
-            //myContract.getMintPrice
-            var tiername;//token-tier-name
-            switch (tier) {
-                  case 1:
-                        tiername = 'Legendary';
-                        break;
-                  case 2:
-                        tiername = 'Epic';
-                        break;
-                  case 3:
-                        tiername = 'Rare';
-                        break;
-                  case 4:
-                        tiername = 'Common';
-                        break;
-
-                  default:
-                        tiername = 'unknown'
-                        break;
-            }
-            document.getElementById('token-tier-name-' + id).innerHTML = tiername;
-
-            myContract.getMintPrices().then(function (res2) {
-                  // db.setDataAsync('mintPrices', res).then(function (res) {
-                  //       console.log('post res: ' + res)
-                  // })
-                  console.info(parseInt(res2[0]._hex));
-                  tierPrice = Number(parseInt(res2[0]._hex) / 1000);
-
-                  document.getElementById('mint-price-' + id).innerHTML = tierPrice;
-
-            })
-
-      })
-}
-
-
-
-function getTokenOwner(id) {
-      myContract.ownerOf(id).then(function (ow) { return ow })
-}
-
-
-
-
-
 function preparePrices() {
       var cookie = $.cookie("mintPrices");
 
@@ -165,6 +81,7 @@ function preparePrices() {
                                     prs[2] = Number(parseInt(res[2]._hex)) / 10 ** 18;
                                     prs[3] = Number(parseInt(res[3]._hex)) / 10 ** 18;
                                     prs[4] = Date.now();
+                                    ShowWarning = false;
 
                                     var expDate = new Date();
                                     expDate.setTime(expDate.getTime() + (cookieExpirePeriod * 60 * 1000));
@@ -176,7 +93,7 @@ function preparePrices() {
                                     afterPrice()
                               })
                         } else {
-                              prs = mintPricesFromAPI;
+                              //prs = mintPricesFromAPI;
                               afterPrice()
                         }
                   }, 1000);
@@ -206,7 +123,7 @@ function afterPrice() {
 
 
                         var now = Date.now()
-                        if (now > Tres + (warningPeriod * 2 * 1000)) {
+                        if (now > Tres + (warningPeriod * 60 * 1000)) {
                               ShowWarning = true;
                               setTimeout(() => {
                                     if (isContractInit && ShowWarning) {
@@ -215,21 +132,26 @@ function afterPrice() {
                                                 setCookieFor('mintedArray', ma)
                                                 db.setDataAsync('mintedArray', ma).then(function (res1) {
                                                       db.setDataAsync('mintedArrayUT', now).then(function (res2) {
-                                                            setCollItems()
+                                                            ShowWarning = false;
+                                                            setCollItems(1)
                                                       })
                                                 })
                                           })
                                     } else {
-                                          setCollItems();
+                                          setCollItems(2);
                                     }
                               }, 1000);
+                        }
+                        else {
+                              setCollItems(3);
                         }
                   })
             })
       }
       else {
             ma = JSON.parse(cookie)
-            setCollItems();
+            console.log(ma)
+            setCollItems(4);
       }
 }
 
@@ -245,22 +167,18 @@ function setCookieFor(name, val) {
 
 
 
-function setCollItems() {
+function setCollItems(n) {
 
       document.getElementById('coll-load').style.display = 'none';
       document.getElementById('coll-load-3').style.display = 'none';
-
-
-      console.log('start of setCollItems')
-      console.log('prs: ' + prs)
-      console.log('ma: ' + ma)
+      console.log('setCollItems Called from: ' + n)
 
       for (let j = 0; j < 21; j++) {
             var arr = [1, 9, 5, 19, 2, 10, 15, 20, 6, 11, 16, 3, 12, 17, 7, 21, 13, 4, 18, 8, 14]
-            var tr1 = [19, 20, 21];
-            var tr2 = [15, 16, 17, 18];
-            var tr3 = [9, 10, 11, 12, 13, 14];
-            var tr4 = [1, 2, 3, 4, 5, 6, 7, 8];
+            // var tr1 = [19, 20, 21];
+            // var tr2 = [15, 16, 17, 18];
+            // var tr3 = [9, 10, 11, 12, 13, 14];
+            // var tr4 = [1, 2, 3, 4, 5, 6, 7, 8];
 
 
 
@@ -364,4 +282,88 @@ function getTier(i) {
       }
       return 1
 }
+
+
+
+
+
+// var intervalBI = setInterval(() => {
+//       console.log('check')
+//       if (isContractInit) {
+//             setTimeout(() => {
+//                   getPriceCookie();
+
+//             }, 500);
+//             clearInterval(intervalBI);
+//       }
+// }, 1000);
+
+
+
+function minte(id) {
+      var tier;
+      myContract.getTokenTier(id).then(function (res) {
+            tier = ethers.utils.formatEther(res._hex);
+            //myContract.getMintPrice
+
+            const options = { value: ethers.utils.parseEther("1.0") }
+
+            console.log(options);
+            myContract.testMint(walletAddress, id, options).then(function (res2) {
+                  console.info(res2);
+
+            });
+      })
+}
+var tierPrice;
+
+function getPrice(id) {
+      myContract.getTokenTier(id).then(function (res) {
+            tier = parseInt(res._hex);
+            console.log('token-tier-' + id);
+            document.getElementById('token-tier-' + id).innerHTML = tier;
+            //myContract.getMintPrice
+            var tiername;//token-tier-name
+            switch (tier) {
+                  case 1:
+                        tiername = 'Legendary';
+                        break;
+                  case 2:
+                        tiername = 'Epic';
+                        break;
+                  case 3:
+                        tiername = 'Rare';
+                        break;
+                  case 4:
+                        tiername = 'Common';
+                        break;
+
+                  default:
+                        tiername = 'unknown'
+                        break;
+            }
+            document.getElementById('token-tier-name-' + id).innerHTML = tiername;
+
+            myContract.getMintPrices().then(function (res2) {
+                  // db.setDataAsync('mintPrices', res).then(function (res) {
+                  //       console.log('post res: ' + res)
+                  // })
+                  console.info(parseInt(res2[0]._hex));
+                  tierPrice = Number(parseInt(res2[0]._hex) / 1000);
+
+                  document.getElementById('mint-price-' + id).innerHTML = tierPrice;
+
+            })
+
+      })
+}
+
+
+
+function getTokenOwner(id) {
+      myContract.ownerOf(id).then(function (ow) { return ow })
+}
+
+
+
 
